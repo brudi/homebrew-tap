@@ -2,16 +2,16 @@
 class Cli < Formula
   desc "brudi CLI"
   homepage "https://brudi.com/"
-  version "0.2.6-rc.1"
+  version "0.2.6-rc.2"
   bottle :unneeded
 
   if OS.mac?
-    url "http://github.mycompany.com/foo/bar/releases/v0.2.6-rc.1/cli_0.2.6-rc.1_macOS.tar.gz", :using => CurlDownloadStrategy.
-    sha256 "b749aa980222836bf20ecab9ed6d96da3756eebe9460aba1b88729043472ab94"
+    url "http://github.mycompany.com/foo/bar/releases/v0.2.6-rc.2/cli_0.2.6-rc.2_macOS.tar.gz", :using => CurlDownloadStrategy.
+    sha256 "46de016b4ea6a78b180c2ac461e06d79897b6055c670ef68ac13234f68484c21"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "http://github.mycompany.com/foo/bar/releases/v0.2.6-rc.1/cli_0.2.6-rc.1_linux.tar.gz", :using => CurlDownloadStrategy.
-      sha256 "16f98f1199a917afdb02dc31a5f9ae2ed4827dd41f0c6cbd9728f7fe0d0795fd"
+      url "http://github.mycompany.com/foo/bar/releases/v0.2.6-rc.2/cli_0.2.6-rc.2_linux.tar.gz", :using => CurlDownloadStrategy.
+      sha256 "8568a2c6079f7dd46b42d4a8335660fbfa1afd1cf3bd57526e755c6186cc97cd"
     end
   end
   
