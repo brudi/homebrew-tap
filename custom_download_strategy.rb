@@ -8,12 +8,6 @@ require "download_strategy"
 # because it lets you use a private S3 bucket as a repo for internal
 # distribution.  (It will work for public buckets as well.)
 class S3DownloadStrategy < CurlDownloadStrategy
-  def initialize(url, name, version, **meta)
-    odeprecated("S3DownloadStrategy",
-      "maintaining S3DownloadStrategy in your own formula or tap")
-    super
-  end
-
   def _fetch(url:, resolved_url:)
     if url !~ %r{^https?://([^.].*)\.s3\.amazonaws\.com/(.+)$} &&
        url !~ %r{^s3://([^.].*?)/(.+)$}
@@ -51,8 +45,6 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   require "utils/github"
 
   def initialize(url, name, version, **meta)
-    odeprecated("GitHubPrivateRepositoryDownloadStrategy",
-      "maintaining GitHubPrivateRepositoryDownloadStrategy in your own formula or tap")
     super
     parse_url_pattern
     set_github_token
@@ -104,12 +96,6 @@ end
 # of your formula. This download strategy uses GitHub access tokens (in the
 # environment variables HOMEBREW_GITHUB_API_TOKEN) to sign the request.
 class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDownloadStrategy
-  def initialize(url, name, version, **meta)
-    odeprecated("GitHubPrivateRepositoryReleaseDownloadStrategy",
-      "maintaining GitHubPrivateRepositoryReleaseDownloadStrategy in your own formula or tap")
-    super
-  end
-
   def parse_url_pattern
     url_pattern = %r{https://github.com/([^/]+)/([^/]+)/releases/download/([^/]+)/(\S+)}
     unless @url =~ url_pattern
@@ -161,8 +147,6 @@ end
 #     ...
 class ScpDownloadStrategy < AbstractFileDownloadStrategy
   def initialize(url, name, version, **meta)
-    odeprecated("ScpDownloadStrategy",
-      "maintaining ScpDownloadStrategy in your own formula or tap")
     super
     parse_url_pattern
   end
@@ -213,12 +197,8 @@ class DownloadStrategyDetector
       def detect_from_url(url)
         case url
         when %r{^s3://}
-          odeprecated("s3://",
-            "maintaining S3DownloadStrategy in your own formula or tap")
           S3DownloadStrategy
         when %r{^scp://}
-          odeprecated("scp://",
-            "maintaining ScpDownloadStrategy in your own formula or tap")
           ScpDownloadStrategy
         else
           super(url)
@@ -228,20 +208,12 @@ class DownloadStrategyDetector
       def detect_from_symbol(symbol)
         case symbol
         when :github_private_repo
-          odeprecated(":github_private_repo",
-            "maintaining GitHubPrivateRepositoryDownloadStrategy in your own formula or tap")
           GitHubPrivateRepositoryDownloadStrategy
         when :github_private_release
-          odeprecated(":github_private_repo",
-            "maintaining GitHubPrivateRepositoryReleaseDownloadStrategy in your own formula or tap")
           GitHubPrivateRepositoryReleaseDownloadStrategy
         when :s3
-          odeprecated(":s3",
-            "maintaining S3DownloadStrategy in your own formula or tap")
           S3DownloadStrategy
         when :scp
-          odeprecated(":scp",
-            "maintaining ScpDownloadStrategy in your own formula or tap")
           ScpDownloadStrategy
         else
           super(symbol)
