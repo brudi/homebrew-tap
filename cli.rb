@@ -2,16 +2,16 @@
 class Cli < Formula
   desc "brudi CLI"
   homepage "https://brudi.com/"
-  version "0.2.8-rc.2"
+  version "0.2.8-rc.3"
   bottle :unneeded
 
   if OS.mac?
-    url "http://github.com/brudi/cli/releases/download/v0.2.8-rc.2/cli_0.2.8-rc.2_macOS.tar.gz"
-    sha256 "a9f8d1730126e535558fc4cedd013f8faa48b8b7b1d9ed726d2b0cc854726af2"
+    url "https://github.com/brudi/cli/releases/download/v0.2.8-rc.3/cli_0.2.8-rc.3_macOS.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "006929ce74927c628c4ac4e46c86230f623166f9a58f2ef7fff7395c8ce4bb15"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "http://github.com/brudi/cli/releases/download/v0.2.8-rc.2/cli_0.2.8-rc.2_linux.tar.gz"
-      sha256 "1d5be63c03c88888e78c4c884ef724ce0283744b346150c3c71c4f385260021e"
+      url "https://github.com/brudi/cli/releases/download/v0.2.8-rc.3/cli_0.2.8-rc.3_linux.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "5ee043bf0907e704e2c706fda8b7bf98d6b487150fb8ea41eb7cde9386ff648c"
     end
   end
   
