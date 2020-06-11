@@ -16,7 +16,6 @@ class Cli < Formula
     end
   end
   
-  depends_on "docker"
   depends_on "git"
 
   def install
