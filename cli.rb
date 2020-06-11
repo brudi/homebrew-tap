@@ -3,23 +3,23 @@ require_relative "./custom_download_strategy"
 class Cli < Formula
   desc "brudi CLI"
   homepage "https://brudi.com/"
-  version "0.2.8-rc.6"
+  version "0.2.8-rc.8"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/brudi/cli/releases/download/v0.2.8-rc.6/cli_0.2.8-rc.6_macOS.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "4b4d78b7ddf25ffd1a6bf903e1b8f5184277ea16078c1cf538e89acc0625fe89"
+    url "https://github.com/brudi/cli/releases/download/v0.2.8-rc.8/cli_0.2.8-rc.8_macOS.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "afed677fc497606d73c541dd7d4bf0dda0a80462675eace7b054468873034687"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/brudi/cli/releases/download/v0.2.8-rc.6/cli_0.2.8-rc.6_linux.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "7aea0ddef7935c593cd94887ad4b270d25522c4fc5d3063972a6e918037d3c80"
+      url "https://github.com/brudi/cli/releases/download/v0.2.8-rc.8/cli_0.2.8-rc.8_linux.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "358bdf3b68889e25010053de9f0417b3809764be7f1f789e9a846284bbdc51ed"
     end
   end
   
   depends_on "git"
 
   def install
-    bin.install "brudi"
+    bin.install "cli" => "brudi"
   end
 
   test do
